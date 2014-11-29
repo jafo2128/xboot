@@ -108,5 +108,23 @@
 #define REPLY_YES               'Y'
 #define REPLY_ERROR             '?'
 
+#ifdef ENABLE_PROGRAM_MODE
+#define INIT_PROGRAM_MODE() uint8_t program_mode = 0
+#define SET_PROGRAM_MODE() program_mode = 1
+#define RESET_PROGRAM_MODE() program_mode = 0
+#define IF_PROGRAM_MODE() \
+    if (!program_mode) \
+    { \
+        in_bootloader = 0; \
+        send_char(REPLY_ERROR); \
+    } \
+    else
+#else
+#define INIT_PROGRAM_MODE() do {} while (0)
+#define SET_PROGRAM_MODE() do {} while (0)
+#define RESET_PROGRAM_MODE() do {} while (0)
+#define IF_PROGRAM_MODE() if (1)
+#endif
+
 #endif // __PROTOCOL_H
 

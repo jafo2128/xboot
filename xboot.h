@@ -47,7 +47,7 @@
 
 // Version
 #define XBOOT_VERSION_MAJOR 1
-#define XBOOT_VERSION_MINOR 7
+#define XBOOT_VERSION_MINOR 8
 
 // config.h
 #ifdef USE_CONFIG_H
